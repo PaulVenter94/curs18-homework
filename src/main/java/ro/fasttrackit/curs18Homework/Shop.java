@@ -51,7 +51,11 @@ public class Shop<T extends ShopItem> {
 
     public Optional<T> remove(String name) {
         Optional<T> result = findByName(name);
-        list.remove(result);
+        list.remove(result.isPresent() ? result.get() : result);
         return result;
+    }
+
+    public int size() {
+        return list.size();
     }
 }

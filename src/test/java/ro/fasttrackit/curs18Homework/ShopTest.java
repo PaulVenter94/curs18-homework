@@ -94,6 +94,8 @@ class ShopTest {
     @DisplayName("When removing by name and find THEN return that object")
     void removeByName() {
         initializeShopList();
-        assertThat(shop.remove("LG TV")).isEqualTo(Optional.of(shop.getList().get(2)));
+        var expected = Optional.of(shop.getList().get(3));
+        assertThat(shop.remove("LG TV")).isEqualTo(expected);
+        assertThat(shop.size()).isEqualTo(3);
     }
 }
