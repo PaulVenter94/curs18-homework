@@ -28,4 +28,14 @@ public class Shop<T extends ShopItem> {
         }
         return result;
     }
+
+    public List<ShopItem> findWhitLowerPrice(int price) {
+        List<ShopItem> result = new ArrayList<>();
+        for (T item : list) {
+            if (item.getPrice() < price) {
+                result.add(item);
+            }
+        }
+        return result;
+    }
 }

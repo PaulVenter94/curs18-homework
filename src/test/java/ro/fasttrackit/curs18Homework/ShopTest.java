@@ -49,6 +49,14 @@ class ShopTest {
         assertThat(list.size()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("When given lower price THEN return an list with lower price")
+    void searchByLowerPrice() {
+        initializeShopList();
+        List<ShopItem> list = shop.findWhitLowerPrice(2000);
+        assertThat(list.size()).isEqualTo(1);
+    }
+
     private void initializeShopList() {
         Electronics samsungTv = new Electronics("Samsung 8K UHD TV", 5000, Category.ON_SALE);
         Electronics sonyTv = new Electronics("Sony 4k", 1000, Category.REFURBISHED);
