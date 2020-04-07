@@ -48,4 +48,10 @@ public class Shop<T extends ShopItem> {
         }
         return Optional.empty();
     }
+
+    public Optional<T> remove(String name) {
+        Optional<T> result = findByName(name);
+        list.remove(result);
+        return result;
+    }
 }

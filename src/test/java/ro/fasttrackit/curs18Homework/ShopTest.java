@@ -83,4 +83,11 @@ class ShopTest {
         assertThat(shop.findByName("LG TV")).isEqualTo(Optional.of(shop.getList().get(3)));
     }
 
+    @Test
+    @DisplayName("When not finding matching name THEN return an empty optional")
+    void removeNameNotFound() {
+        initializeShopList();
+        assertThat(shop.remove("LG TV")).isEmpty();
+    }
+
 }
