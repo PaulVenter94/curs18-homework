@@ -87,7 +87,7 @@ class ShopTest {
     @DisplayName("When not finding matching name THEN return an empty optional")
     void removeNameNotFound() {
         initializeShopList();
-        assertThat(shop.remove("LG TV")).isEmpty();
+        assertThat(shop.remove("GoldStar")).isEmpty();
     }
 
 }
