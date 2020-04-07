@@ -37,7 +37,7 @@ class ShopTest {
     @Test
     @DisplayName("When search by category if nothing foud THEN empty list is returned")
     void whenNothingIsFound() {
-        List<ShopItem> list = shop.findByCategory(Category.ON_SALE);
+        List<Electronics> list = shop.findByCategory(Category.ON_SALE);
         assertTrue(list.isEmpty());
     }
 
@@ -45,7 +45,7 @@ class ShopTest {
     @DisplayName("When search by cat THEN return a list inly with those items")
     void searchByCategory() {
         initializeShopList();
-        List<ShopItem> list = shop.findByCategory(Category.ON_SALE);
+        List<Electronics> list = shop.findByCategory(Category.ON_SALE);
         assertThat(list.size()).isEqualTo(2);
     }
 
@@ -53,8 +53,15 @@ class ShopTest {
     @DisplayName("When given lower price THEN return an list with lower price")
     void searchByLowerPrice() {
         initializeShopList();
-        List<ShopItem> list = shop.findWhitLowerPrice(2000);
+        List<Electronics> list = shop.findWhitLowerPrice(2000);
         assertThat(list.size()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("When not finding matching name THEN return an empty optional")
+    void emptyOptional() {
+        initializeShopList();
+        assertThat(shop.findByName("Goldstar TV")).isEqualTo(null);
     }
 
     private void initializeShopList() {

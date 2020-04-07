@@ -8,9 +8,20 @@ public class Electronics implements ShopItem {
     private final Category category;
 
     public Electronics(String name, int price, Category category) {
-        this.name = name;
-        this.price = price;
-        this.category = category;
+        if (validateObject(name, price)) {
+            this.name = name;
+            this.price = price;
+            this.category = category;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean validateObject(String name, int price) {
+        if (name != null && name.length() > 0 && price > 0) {
+            return true;
+        }
+        return false;
     }
 
     @Override

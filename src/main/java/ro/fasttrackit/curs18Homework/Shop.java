@@ -2,6 +2,7 @@ package ro.fasttrackit.curs18Homework;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Shop<T extends ShopItem> {
     private final List<T> list;
@@ -19,9 +20,9 @@ public class Shop<T extends ShopItem> {
         list.add(item);
     }
 
-    public List<ShopItem> findByCategory(Category category) {
-        List<ShopItem> result = new ArrayList<>();
-        for (ShopItem item : list) {
+    public List<T> findByCategory(Category category) {
+        List<T> result = new ArrayList<>();
+        for (T item : list) {
             if (item.getCategory().equals(category)) {
                 result.add(item);
             }
@@ -29,13 +30,22 @@ public class Shop<T extends ShopItem> {
         return result;
     }
 
-    public List<ShopItem> findWhitLowerPrice(int price) {
-        List<ShopItem> result = new ArrayList<>();
+    public List<T> findWhitLowerPrice(int price) {
+        List<T> result = new ArrayList<>();
         for (T item : list) {
             if (item.getPrice() < price) {
                 result.add(item);
             }
         }
         return result;
+    }
+
+    public Optional<T> findByName(String name) {
+        for (T item : list) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return Optional.of(item);
+            }
+        }
+        return Optional.empty();
     }
 }
