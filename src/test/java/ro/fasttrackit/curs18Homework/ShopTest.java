@@ -46,7 +46,7 @@ class ShopTest {
     void searchByCategory() {
         initializeShopList();
         List<ShopItem> list = shop.findByCategory(Category.ON_SALE);
-        assertThat(list).isEqualTo(1);
+        assertThat(list.size()).isEqualTo(2);
     }
 
     private void initializeShopList() {
