@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ShopTest {
     private Shop<Electronics> shop;
@@ -29,7 +30,7 @@ class ShopTest {
         Electronics samsungTv = new Electronics("Samsung 8K UHD TV", 5000, Category.ON_SALE);
         shop.add(samsungTv);
 
-        assertThat(shop.getList().size()).isEqualTo(0);
+        assertThat(shop.getList().size()).isEqualTo(1);
         assertEquals(samsungTv, shop.getList().get(0));
     }
 }
