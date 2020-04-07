@@ -6,10 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShopTest {
-    private Shop shop;
+    private Shop<Electronics> shop;
 
     @BeforeEach
     void setup() {
@@ -20,5 +21,15 @@ class ShopTest {
     @DisplayName("When adding a null element THEN throw error")
     void addingNullItem() {
         assertThrows(IllegalArgumentException.class, () -> shop.add(null));
+    }
+
+    @Test
+    @DisplayName("When adding an valid item THEN its added to the list")
+    void addItem() {
+        Electronics samsungTv = new Electronics("Samsung 8K UHD TV", 5000, Category.ON_SALE);
+        shop.add(samsungTv);
+
+        assertThat(shop.getList().size()).isEqualTo(0);
+        assertEquals(samsungTv, shop.getList().get(0));
     }
 }
