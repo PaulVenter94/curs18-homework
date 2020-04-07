@@ -18,6 +18,17 @@ class ShopTest {
         shop = new Shop(new ArrayList());
     }
 
+    private void initializeShopList() {
+        Electronics samsungTv = new Electronics("Samsung 8K UHD TV", 5000, Category.ON_SALE);
+        Electronics sonyTv = new Electronics("Sony 4k", 1000, Category.REFURBISHED);
+        Electronics samsungTv2 = new Electronics("Samsung 4K UHD TV", 2000, Category.ON_SALE);
+        Electronics lgTv = new Electronics("LG TV", 1500, Category.NEW);
+        shop.add(samsungTv);
+        shop.add(sonyTv);
+        shop.add(samsungTv2);
+        shop.add(lgTv);
+    }
+
     @Test
     @DisplayName("When adding a null element THEN throw error")
     void addingNullItem() {
@@ -61,17 +72,14 @@ class ShopTest {
     @DisplayName("When not finding matching name THEN return an empty optional")
     void emptyOptional() {
         initializeShopList();
-        assertThat(shop.findByName("Goldstar TV")).isEqualTo(null);
+        assertThat(shop.findByName("Goldstar TV")).isEmpty();
     }
 
-    private void initializeShopList() {
-        Electronics samsungTv = new Electronics("Samsung 8K UHD TV", 5000, Category.ON_SALE);
-        Electronics sonyTv = new Electronics("Sony 4k", 1000, Category.REFURBISHED);
-        Electronics samsungTv2 = new Electronics("Samsung 4K UHD TV", 2000, Category.ON_SALE);
-        Electronics lgTv = new Electronics("LG TV", 1500, Category.NEW);
-        shop.add(samsungTv);
-        shop.add(sonyTv);
-        shop.add(samsungTv2);
-        shop.add(lgTv);
+    @Test
+    @DisplayName("When seacring by name and find THEN return that object")
+    void seachByName() {
+        initializeShopList();
+        assertThat(shop.findByName("LG TV")).isEqualTo(shop.getList().get(2));
     }
+
 }
