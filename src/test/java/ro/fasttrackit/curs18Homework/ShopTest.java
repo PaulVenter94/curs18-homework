@@ -13,7 +13,7 @@ class ShopTest {
 
     @BeforeEach
     void setup() {
-        Shop shop = new Shop(new ArrayList());
+        shop = new Shop(new ArrayList());
     }
 
     @Test

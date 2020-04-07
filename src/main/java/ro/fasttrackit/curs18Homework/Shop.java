@@ -15,6 +15,7 @@ public class Shop<T extends ShopItem> {
     }
 
     public void add(T item) {
+        if (item == null) throw new IllegalArgumentException();
         list.add(item);
     }
 }
