@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -79,7 +80,7 @@ class ShopTest {
     @DisplayName("When seacring by name and find THEN return that object")
     void seachByName() {
         initializeShopList();
-        assertThat(shop.findByName("LG TV")).isEqualTo(shop.getList().get(2));
+        assertThat(shop.findByName("LG TV")).isEqualTo(Optional.of(shop.getList().get(3)));
     }
 
 }
