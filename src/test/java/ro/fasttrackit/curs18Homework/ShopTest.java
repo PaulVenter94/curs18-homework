@@ -54,7 +54,7 @@ class ShopTest {
     void searchByLowerPrice() {
         initializeShopList();
         List<ShopItem> list = shop.findWhitLowerPrice(2000);
-        assertThat(list.size()).isEqualTo(1);
+        assertThat(list.size()).isEqualTo(2);
     }
 
     private void initializeShopList() {
