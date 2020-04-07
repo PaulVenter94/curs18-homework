@@ -77,7 +77,7 @@ class ShopTest {
     }
 
     @Test
-    @DisplayName("When seacring by name and find THEN return that object")
+    @DisplayName("When searching by name and find THEN return that object")
     void seachByName() {
         initializeShopList();
         assertThat(shop.findByName("LG TV")).isEqualTo(Optional.of(shop.getList().get(3)));
@@ -90,4 +90,10 @@ class ShopTest {
         assertThat(shop.remove("GoldStar")).isEmpty();
     }
 
+    @Test
+    @DisplayName("When removing by name and find THEN return that object")
+    void removeByName() {
+        initializeShopList();
+        assertThat(shop.remove("LG TV")).isEqualTo(Optional.of(shop.getList().get(2)));
+    }
 }
