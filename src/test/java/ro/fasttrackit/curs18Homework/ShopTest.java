@@ -5,10 +5,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ShopTest {
     private Shop<Electronics> shop;
@@ -32,5 +32,12 @@ class ShopTest {
 
         assertThat(shop.getList().size()).isEqualTo(1);
         assertEquals(samsungTv, shop.getList().get(0));
+    }
+
+    @Test
+    @DisplayName("When search by category if nothing foud THEN empty list is returned")
+    void whenNothingIsFound() {
+        List<ShopItem> list = shop.findByCategory(Category.ON_SALE);
+        assertTrue(list.isEmpty());
     }
 }
